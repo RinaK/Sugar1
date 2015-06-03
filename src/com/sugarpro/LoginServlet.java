@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
             String user = request.getParameter("user");
             
             // データベースに接続
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
+           Class.forName("org.apache.derby.jdbc.ClientDriver");
             String driverURL = "jdbc:derby://localhost:1527/shohin";
             Connection con = DriverManager.getConnection(driverURL, "db","db");
             //con = jdbctest.getConnection(); //connection pooling を使う場合
@@ -103,8 +103,8 @@ public class LoginServlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("/itemListFromDB.jsp");
                 rd.forward(request, response);
 
-            }  //end else
-
+              //end else
+            }
         } catch(Exception e){
             throw new ServletException(e);
         } 
