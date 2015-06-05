@@ -45,43 +45,44 @@ public class LoginServlet extends HttpServlet {
         boolean found = false;
         
         try {
-            // リクエストパラメータから入力されたパスワードを取り出し
+           
             String password = request.getParameter("password");
             String user = request.getParameter("user");
             
-            // データベースに接続
-           Class.forName("org.apache.derby.jdbc.ClientDriver");
+
+       /*    Class.forName("org.apache.derby.jdbc.ClientDriver");
             String driverURL = "jdbc:derby://localhost:1527/shohin";
             Connection con = DriverManager.getConnection(driverURL, "db","db");
-            //con = jdbctest.getConnection(); //connection pooling を使う場合
-            Statement stmt = con.createStatement();
+            //con = jdbctest.getConnection(); //connection pooling ���������������
+            Statement stmt = con.createStatement();*/
             
-           //データベースに入力されたユーザ名とパスワードに一致するレコードがあるかを問い合わせる
-            String sql = "select * from U_USER where USER_NAME=? and PASSWORD=?";
+         
+       /*     String sql = "select * from U_USER where USER_NAME=? and PASSWORD=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, user);
             ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery(); */
             
-            // 一件でもレコードがあれば、ユーザ名とパスワードが正しく入力された。
-            if(rs.next()) {
+          
+       /*     if(rs.next()) {
                 found = true;
-            }
+            }*/
 
             String nextJsp;
             if (!found) {
-                // パスワードが正しくない場合、セッションを無効にする。
+              
                 session.invalidate();
-                // ログイン失敗ページへ移動。
-                nextJsp = "/loginFailed.jsp";
+
+                nextJsp = "loginFailed.html";
                 RequestDispatcher dispatcher = request.getRequestDispatcher(nextJsp);
                 dispatcher.forward(request, response);
             } else {
-                // パスワードが正しい場合          
-                // ユーザ名をセッション変数に格納する
+               
                 session.setAttribute("user", user);
-                // データベースに商品についての問い合わせを行う
-                sql = "select * from U_SHOHIN";
+            }
+        
+              
+             /*   sql = "select * from U_SHOHIN";
                 rs = stmt.executeQuery(sql);
                 List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
                 while (rs.next()) {
@@ -90,26 +91,31 @@ public class LoginServlet extends HttpServlet {
                     record.put("name", rs.getString("SHOHIN_NAME"));
                     record.put("price", new Integer(rs.getInt("PRICE")));
                     list.add(record);
-                }
-                // データベースの後始末。
-                rs.close();
-                stmt.close();
-                con.close();
-                // 商品名のリストを リクエスト変数　data にしまう。
-                request.setAttribute("data", list);
+                }*/
+            
+        
+        
 
-                // 次のページに移動
+          /*    rs.close();
+                stmt.close();
+                con.close();*/
+           
+             //   request.setAttribute("data", list);
+
+     
                 //RequestDispatcher rd = request.getRequestDispatcher("/loginSuccess.jsp"); 
-                RequestDispatcher rd = request.getRequestDispatcher("/itemListFromDB.jsp");
-                rd.forward(request, response);
+                RequestDispatcher rd = request.getRequestDispatcher("itemListFromDB.html");
+             //   rd.forward(request, response);
 
               //end else
-            }
-        } catch(Exception e){
-            throw new ServletException(e);
-        } 
         
-    }
+        }catch(Exception e){
+            throw new ServletException(e);
+        }
+     }
+        
+        
+    
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -125,7 +131,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
     }
 
     /**
@@ -140,7 +147,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       //processRequest(request, response);
     }
 
     /**

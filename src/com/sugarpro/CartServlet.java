@@ -41,13 +41,13 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         //PrintWriter out = response.getWriter();
         
-        // Check Box の情報をとりだす。
+        // Check Box ���������������������������
         HttpSession session = request.getSession();     
         String[] strVals = request.getParameterValues("shohinid");
         int numChecks = 0;
         if (strVals != null) {
-            numChecks = strVals.length; // チェックの個数
-        } else { // 何もチェックされていない。
+            numChecks = strVals.length; // ���������������������
+        } else { // ���������������������������������������
             numChecks = 0;
         }
 
@@ -61,12 +61,12 @@ public class CartServlet extends HttpServlet {
             List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
             int total = 0;
                        
-            // Checkbox の (name: shohinid)と結び付けられた value の並びをとりだす。
+            // Checkbox ��� (name: shohinid)������������������������ value ���������������������������
             for (int i = 0; i < numChecks; i++) {
-                //  i番目のshohinid 項目の value をとりだす。
+                //  i���������shohinid ��������� value ������������������
                 int idFromCB = Integer.parseInt(strVals[i]);
               
-                // その商品の情報（名前、価格）をDBから取り出す。合計金額も計算する。
+                // ���������������������������������������������DB���������������������������������������������������
                 String sql = "select * from U_SHOHIN where SHOHIN_ID ="
                         + idFromCB;
                 ResultSet rs = stmt.executeQuery(sql);
@@ -80,16 +80,16 @@ public class CartServlet extends HttpServlet {
                 } 
                 
                 rs.close();
-            }//end for (int i チェックされた商品についての繰り返し。
+            }//end for (int i ���������������������������������������������������������
             stmt.close();
             con.close();
            
-            // 表示のため、結果をリクエスト変数にしまう。
+            // ���������������������������������������������������������������
            request.setAttribute("count", numChecks);
            request.setAttribute("data", list);
            request.setAttribute("total", total);
 
-            RequestDispatcher rd = request.getRequestDispatcher("/cartCheckBox.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/cartCheckBox.html");
             rd.forward(request, response);
 
         } catch (Exception e) {

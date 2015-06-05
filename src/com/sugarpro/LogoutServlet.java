@@ -33,7 +33,7 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
          HttpSession session = request.getSession();
           session.invalidate();
-          String nextJsp = "/login.jsp";
+          String nextJsp = "login.html";
                 RequestDispatcher dispatcher = request.getRequestDispatcher(nextJsp);
                 dispatcher.forward(request, response);
     

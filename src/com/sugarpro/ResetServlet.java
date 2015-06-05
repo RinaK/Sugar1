@@ -65,9 +65,9 @@ public class ResetServlet extends HttpServlet {
             stmt.close();
             con.close();
         } catch (Exception e) {
-            System.out.println("エラーです");
+            System.out.println("���������������");
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("/itemListFromDB.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/itemListFromDB.html");
             rd.forward(request, response);
         }
 

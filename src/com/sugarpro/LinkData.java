@@ -2,7 +2,7 @@ package com.sugarpro;
 
 import java.net.URL;
 import java.util.Date;
- 
+
 import javax.jdo.annotations.*;
  
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
@@ -12,23 +12,23 @@ public class LinkData {
     private Long id;
      
     @Persistent
-    private String Shohin;
+    private String shohin;
      
     @Persistent
-    private int price;
+    private int pricea;
      
     @Persistent
-    private Long password;
+    private String password;
      
-    @Persistent
-    private Date datetime;
+   /* @Persistent
+    private Date datetime;*/
  
-    public LinkData(String shohin, int price, Long password, Date datetime) {
+    public LinkData(String shohin,int pricea, String password) {
         super();
-        this.Shohin= shohin;
-        this.price = price;
+        this.shohin= shohin;
+        this.pricea = pricea;
         this.password = password;
-        this.datetime = datetime;
+        //this.datetime = datetime;
     }
  
     public Long getId() {
@@ -40,34 +40,34 @@ public class LinkData {
     }
  
     public String getShohin() {
-        return Shohin;
+        return shohin;
     }
  
     public void setShohin(String shohin) {
-        this.Shohin = shohin;
+        this.shohin = shohin;
     }
  
     public int getPrice() {
-        return price;
+        return pricea;
     }
  
     public void setPrice(int price) {
-        this.price = price;
+        this.pricea = price;
     }
  
-    public Long getPassword() {
+    public String getPassword() {
         return password;
     }
  
-    public void setComment(Long password) {
+    public void setPassword(String password) {
         this.password = password;
     }
  
-    public Date getDatetime() {
+ /*   public Date getDatetime() {
         return datetime;
     }
  
-    public void setDatetime(Date datetime) {
+   /* public void setDatetime(Date datetime) {
         this.datetime = datetime;
-    }
+    }*/
 }
