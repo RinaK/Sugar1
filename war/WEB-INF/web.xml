@@ -49,8 +49,32 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Cart</servlet-name>
+		<servlet-class>com.sugarpro.CartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Cart</servlet-name>
+		<url-pattern>/cart</url-pattern>
+	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>com.sugarpro.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Reset</servlet-name>
+		<servlet-class>com.sugarpro.ResetServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Reset</servlet-name>
+		<url-pattern>/reset</url-pattern>
+	</servlet-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

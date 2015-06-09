@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
                 found = true;
             }*/
 
-            String nextJsp;
+            /*String nextJsp;
             if (!found) {
               
                 session.invalidate();
@@ -79,7 +79,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                
                 session.setAttribute("user", user);
-            }
+            }*/
         
               
              /*   sql = "select * from U_SHOHIN";
@@ -105,7 +105,7 @@ public class LoginServlet extends HttpServlet {
      
                 //RequestDispatcher rd = request.getRequestDispatcher("/loginSuccess.jsp"); 
                 RequestDispatcher rd = request.getRequestDispatcher("itemListFromDB.html");
-             //   rd.forward(request, response);
+             rd.forward(request, response);
 
               //end else
         
@@ -131,7 +131,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
         
     }
 
@@ -147,7 +147,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       //processRequest(request, response);
+       processRequest(request, response);
     }
 
     /**

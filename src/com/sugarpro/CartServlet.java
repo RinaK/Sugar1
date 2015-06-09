@@ -41,7 +41,7 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         //PrintWriter out = response.getWriter();
         
-        // Check Box ���������������������������
+        // Check Box 
         HttpSession session = request.getSession();     
         String[] strVals = request.getParameterValues("shohinid");
         int numChecks = 0;
@@ -52,11 +52,11 @@ public class CartServlet extends HttpServlet {
         }
 
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String driverURL = "jdbc:derby://localhost:1527/shohin";
-            Connection con = DriverManager.getConnection(driverURL, "db", "db");
+            //Class.forName("org.apache.derby.jdbc.ClientDriver");
+            //String driverURL = "jdbc:derby://localhost:1527/shohin";
+            //Connection con = DriverManager.getConnection(driverURL, "db", "db");
             // Connection con = jdbctest.getConnection();
-                    java.sql.Statement stmt = con.createStatement();
+                    //java.sql.Statement stmt = con.createStatement();
 
             List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
             int total = 0;
@@ -69,20 +69,20 @@ public class CartServlet extends HttpServlet {
                 // ���������������������������������������������DB���������������������������������������������������
                 String sql = "select * from U_SHOHIN where SHOHIN_ID ="
                         + idFromCB;
-                ResultSet rs = stmt.executeQuery(sql);
-                if (rs.next()) {
+                //ResultSet rs = stmt.executeQuery(sql);
+                /*if (rs.next()) {
                     Map<String, Object> record = new HashMap<String, Object>();
                     record.put("id", new Integer(rs.getInt("SHOHIN_ID")));
                     record.put("name", rs.getString("SHOHIN_NAME"));
                     record.put("price", new Integer(rs.getInt("PRICE")));
                     total = total + rs.getInt("PRICE");
                     list.add(record);
-                } 
+                } */
                 
-                rs.close();
+               // rs.close();
             }//end for (int i ���������������������������������������������������������
-            stmt.close();
-            con.close();
+            //stmt.close();
+            //con.close();
            
             // ���������������������������������������������������������������
            request.setAttribute("count", numChecks);

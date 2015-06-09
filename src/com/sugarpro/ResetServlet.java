@@ -45,25 +45,25 @@ public class ResetServlet extends HttpServlet {
         //HttpSession session = request.getSession();
 
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String driverURL = "jdbc:derby://localhost:1527/shohin";
-            Connection con = DriverManager.getConnection(driverURL, "db", "db");
+            //Class.forName("org.apache.derby.jdbc.ClientDriver");
+            //String driverURL = "jdbc:derby://localhost:1527/shohin";
+            //Connection con = DriverManager.getConnection(driverURL, "db", "db");
             
-            Statement stmt = con.createStatement();
-            String sql = "select * from U_SHOHIN";
-            ResultSet rs = stmt.executeQuery(sql);
+            //Statement stmt = con.createStatement();
+            //String sql = "select * from U_SHOHIN";
+            //ResultSet rs = stmt.executeQuery(sql);
             List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-            while (rs.next()) {
+            /*while (rs.next()) {
                 Map<String, Object> record = new HashMap<String, Object>();
                 record.put("id", new Integer(rs.getInt("SHOHIN_ID")));
                 record.put("name", rs.getString("SHOHIN_NAME"));
                 record.put("price", new Integer(rs.getInt("PRICE")));
                 list.add(record);
-            }
+            }*/
             request.setAttribute("data", list);
-            rs.close();
-            stmt.close();
-            con.close();
+            //rs.close();
+            //stmt.close();
+            //con.close();
         } catch (Exception e) {
             System.out.println("���������������");
         } finally {
