@@ -25,15 +25,13 @@ public class EditLinkDataServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         long id = Long.parseLong(req.getParameter("id"));
         String shohin = req.getParameter("shohin");
-        String pricea = req.getParameter("pricea");
-        int price=Integer.parseInt(pricea);
-        String password = req.getParameter("password");
+        String price = req.getParameter("price");
+        //int price=Integer.parseInt(pricea);
         PersistenceManagerFactory factory = PMF.get();
         PersistenceManager manager = factory.getPersistenceManager();
         LinkData data = (LinkData)manager.getObjectById(LinkData.class,id);
         data.setShohin(shohin);
         data.setPrice(price);
-        data.setPassword(password);
         manager.close();
         resp.sendRedirect("index.html");
     }
