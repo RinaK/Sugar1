@@ -15,19 +15,17 @@ public class LinkData {
     private String shohin;
      
     @Persistent
-    private int pricea;
+    private String pricea;
      
-    @Persistent
-    private String password;
+ 
      
    /* @Persistent
     private Date datetime;*/
  
-    public LinkData(String shohin,int pricea, String password) {
+    public LinkData(String shohin,String pricea) {
         super();
         this.shohin= shohin;
         this.pricea = pricea;
-        this.password = password;
         //this.datetime = datetime;
     }
  
@@ -47,21 +45,14 @@ public class LinkData {
         this.shohin = shohin;
     }
  
-    public int getPrice() {
+    public String getPrice() {
         return pricea;
     }
  
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.pricea = price;
     }
  
-    public String getPassword() {
-        return password;
-    }
- 
-    public void setPassword(String password) {
-        this.password = password;
-    }
  
  /*   public Date getDatetime() {
         return datetime;
